@@ -1,71 +1,41 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-//Code to import Budget.js
+import Grid from '@mui/material/Grid';
 import Budget from './components/Budget';
-
-// Add code to import the other components here under
-
-
 import { AppProvider } from './context/AppContext';
 import Remaining from './components/Remaining';
 import ExpenseTotal from './components/ExpenseTotal';
 import ExpenseList from './components/ExpenseList';
 import ExpenseItem from './components/ExpenseItem';
 import AllocationForm from './components/AllocationForm';
+import { Container } from '@mui/material';
 const App = () => {
     return (
         <AppProvider>
-            <div className='container'>
+            <Container>
                 <h1 className='mt-3'>Company's Budget Allocation</h1>
-                <div className='row mt-3'>
-                    {
-                        /* Add Budget component here */
-                        // Budget component
-                        <div className='col-sm'>
-                            <Budget />
-                        </div>
-                    }
-
-                    {
-                        /* Add Remaining component here*/
-                        <div className='col-sm'>
+                <Grid item contaner direction={"row"}>
+                    <Grid item container direction={"row"}>
+                        <Grid item xs={3}>
+                            <Budget/>
+                        </Grid>
+                        <Grid item xs={3}>
                             <Remaining />
-                        </div>
-                    }
-
-                    {
-                        /* Add ExpenseTotal component here */
-                        //ExpenseTotal component
-                        <div className='col-sm'>
+                        </Grid>
+                        <Grid item xs={3}>
                             <ExpenseTotal />
-                        </div>
-                    }
-
-                    {
-                        /* Add ExpenseList component here */
-                        <div className='col-sm'>
-                            <ExpenseList />
-                        </div>
-                    }
-
-                    {
-                        /* Add ExpenseItem component here */
-                        <div className='col-sm'>
-                            <ExpenseItem />
-                        </div>
-                    }
-
-                    {
-                        /* Add AllocationForm component here under */
-                        <div className='col-sm'>
-                            <AllocationForm />
-                        </div>
-                    }
-
-                </div>
-            </div>
+                        </Grid>
+                    </Grid>
+                    <Grid item container direction={"column"}>
+                        <ExpenseList />
+                        <ExpenseItem />
+                    </Grid>
+                    <Grid>
+                        <AllocationForm />
+                    </Grid>
+                </Grid>
+            </Container>
         </AppProvider>
-    );
-};
+    )
+}
 export default App;
